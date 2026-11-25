@@ -23,6 +23,7 @@ def lp(p):  # extended-length path: a plain path past 259 characters fails to op
     if os.name != 'nt' or p.startswith('\\\\?\\'): return p
     return '\\\\?\\UNC\\' + p[2:] if p.startswith('\\\\') else '\\\\?\\' + p
 
+sys.dont_write_bytecode = True  # no __pycache__ beside this script: it runs inside the package, which Unity imports
 from preview_assets import is_shader_asset, shader_asset_name, rewrite_shader_refs
 
 NS = re.compile(r'^\s*namespace\s+([\w.]+)', re.M)

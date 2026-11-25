@@ -118,7 +118,8 @@ again on the same project is refused.
 ### Step 1.6: Open the project in Unity
 
 1. Add the project folder to Unity Hub's project list and open it from there. Hub lists it under your folder's name.
-2. Wait until Unity finishes loading. The Editor window appears.
+2. Wait until Unity finishes loading. The first open took at most 16 minutes on the one machine where it was
+   timed. The Editor window appears.
 3. Open the **Console**: in Unity's top menu bar choose **Window → General → Console**. Press **Clear** in the Console's
    toolbar to empty it.
 
@@ -465,7 +466,8 @@ window opens on **Map Check** and lists anything in the layer that pointed at th
 **You should see:** the window's last line `Added … (ArenaSkirmish) from … : N encounter objects, … source-map links cleared`.
 Map Check shows one **Error** until step B6: `Terrain … has no SplatMapInfo, so the map has no terrain types.` That is
 expected on a copy that has no masks yet, and step B6 clears it. If the **Contract type** entry says `(no extracted map has
-one)`, extract Split River (step 1.7) and press **Rebuild index**.
+one)`, extract Split River (step 1.7) and press **Rebuild index**. If **Add layer** refuses because the map already has a
+layer of that name, the window says so and the Console shows one red line.
 
 ### Step B4: Check the lances (and edit, if you want)
 
@@ -582,10 +584,12 @@ when the lighting data is missing or older than the terrain.
 1. Make sure the scene is saved. Build Mod refuses a scene with unsaved changes.
 2. Choose **UCU Map Kit → Build Mod…**. The kit works through six steps, and names each in the Console as it finishes:
    **1/6 Map id**, **2/6 Check and export**, **3/6 Icon**, **4/6 Bundle**, **5/6 mapkit-map.json**, **6/6 mod.json**. The first
-   Build Mod in a new project is long: it compiles the game's shaders for the bundle and keeps them in the project's `Library`
-   folder, and the Editor is busy until it ends. Later builds reuse them and are much shorter, with one exception: the first
-   Build Mod of a map that holds a dropship, Taiga River among them, is long too (54 minutes on the tested machine, even in a
-   project that had built before). Don't close the Editor while it works. **Test map in UCU** runs the same build.
+   Build Mod in a new project is long: 53 minutes for a template map with no dropship (one run on one
+   machine). It compiles the game's shaders for the bundle and keeps them in the project's `Library` folder, and the Editor
+   is busy until it ends. Later builds reuse them: the second build of a Taiga River clone took 131 seconds; a template map's
+   second build was not timed. The first Build Mod of a map that holds a dropship, Taiga River among them, is long too (54
+   minutes on the tested machine, even in a project that had built before). Don't close the Editor while it works. **Test map
+   in UCU** runs the same build.
 3. Open the folder `<project>\MapKitOutput\<map name>`. This is your mod.
 
 **You should see:** a Console line `UCU Map Kit: Build Mod wrote 14 files to <project>\MapKitOutput\<map name>. Copy that folder into
@@ -615,7 +619,7 @@ If a step fails, the Console's red line `UCU Map Kit: Build Mod stopped at step 
 Use this to put the map into another UCU install, or when you want to start UCU yourself.
 
 1. **Install `MapKitLoader` once**, in `<UCU>\Mods\MapKitLoader\`. Every kit map needs it, and one copy serves all of them.
-   Setup built it into `<project>\MapKitOutput\_loader\MapKitLoader` (that folder holds `MapKitLoader.dll` and `mod.json`):
+   Setup built it into `<project>\MapKitOutput\_loader\MapKitLoader` (that folder holds `MapKitLoader.dll`, its `.pdb` and `mod.json`):
    copy that folder into `<UCU>\Mods`. For another UCU install, build it again from the kit's `Loader~` folder with the
    .NET SDK, using the command in the [README](../README.md#test-in-ucu).
 2. Copy `<project>\MapKitOutput\<map name>` into `<UCU>\Mods`.
@@ -732,8 +736,8 @@ or the lobby. If a map's `mapkit-map.json` is broken, the log says so, and the o
 
 ### Other things seen
 
-- **The first Build Mod keeps the Editor busy for a long time.** This is the shader compile. Later builds are much
-  shorter, except the first one of a map that holds a dropship, Taiga River among them, which is long too (step 2.4).
+- **The first Build Mod keeps the Editor busy for a long time.** This is the shader compile. Later builds reuse it,
+  except the first one of a map that holds a dropship, Taiga River among them, which is long too (step 2.4 has the times).
 - **The Extract Retail Maps fields point at another project's tool.** They are remembered per Windows user, not per project.
   Check **Mapkit Asset Manager** and **Retail BATTLETECH folder** before you press **Extract**.
 - **A road you baked does not show in the game.** A template map's ground is the biome's dirt-road texture, which is what shows

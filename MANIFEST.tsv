@@ -1,4 +1,4 @@
-# UCU Map Kit 0.1.0 published by setup/publish-kit.ps1 from commit e4422b683c8f44e8ccca69c51b3b92035903ae92, tree 59671187b31e89ee48de33fe5494214e8dcd9981 (tools/map-kit at that commit)
+# UCU Map Kit 0.1.0 published by setup/publish-kit.ps1 from commit 4f34908900b60276c922e2181df68c3668ce1600, tree b152b888edd861db6faf6c1651c2b59a20b4d376 (tools/map-kit at that commit)
 # left out: setup/batch-unity.ps1 (dot-sources tools/UcuPaths.ps1)
 # left out: setup/hx.ps1 (calls tools/hera-call.ps1)
 # left out: setup/kr-chain.ps1 (dot-sources tools/UcuPaths.ps1 and calls tools/hera-call.ps1)
@@ -28,7 +28,7 @@ Documentation~/images/r1-preview-high.jpg	257645	698858db52d51d9dd6101a0bbce70ab
 Documentation~/images/r1-preview-low.jpg	207245	98c34532d3437bfe42d2499809f065788d5c46ccac0c294afac52801e12e8688
 Documentation~/images/r1-preview-window.png	44521	a122544ebcb81dfc3ccd1c346d5884c7654b89bf45f070ac6abf1280057cbfd8
 Documentation~/images/r2-extract-retail-maps.png	390840	998140bb3e7a658436cb401b5b87375b585423b50adc334424bc6f2c55fb52f1
-Documentation~/walkthrough.md	52877	0b482edad8661b31a576c901e47e37705dc8589427139ab90ad3f4db16ec6622
+Documentation~/walkthrough.md	53247	d49dafb22291954bebef551b223dd8ac0d5398e0c6b7bdb27322bdb6db829987
 Editor/AddContractLayerWindow.cs	6373	f9dd8403dad94cd9c01fc56df66e446e465ef8fd1f5631fbf05221907b353936
 Editor/BuildMod.cs	19216	d33130f45bfb9c2699108bf55ddec0eae5890f31048875cdddd21cec08975217
 Editor/ContractLayers.cs	42287	b7228d83465e6ac5d6a28d13326be591f947d662c161334c2e3b912283063585
@@ -145,7 +145,7 @@ previews/mapStory_storyEncounter7_vLow.png	344698	f268ed6d96e96209d0ed23aa09435d
 previews/MapStory_StoryEncounter8_vHigh.png	323208	5158dfd372712901b2214cd693f9d5f938e52a9e3daf14de059eb66cfcf7ebf3
 previews/mapStory_StoryEncounter9_vHigh.png	319881	744c20e1138b2abae93b69da6396c2c32a043284353d64ce32528dd0cdcba56b
 previews/README.md	2351	a6924f7b9fa64bc33cef4d10923f5526ade41c1896a62abf0e67170858daf791
-README.md	47132	7e42b5679acbca28ebadc23915fca3777003faea145e3af6612ba8975456a73b
+README.md	47507	dda8770504880180849a3faf7c5248ab92065d2b251315c80fc2421e5f79a494
 setup/add_packages.py	1872	bb913bd18211f1cba1f7652ae1e803f912eb3c14ee1ea619d21fc00d6e3ab227
 setup/batch_ranges.py	23392	22cdd3eac318e3af12ebc34c42d5456b3e991de9868200cb5a31b91a86756151
 setup/block-ns.py	1515	3fabbe95cb5fa930ff3fdf76020632c06ae9589ac56f63927ae54dae6b4b4beb
@@ -159,7 +159,7 @@ setup/embed_scene_logic.py	11658	0ce10c83edf0d7542848006f5f472d377576862c00fc34c
 setup/export-map.ps1	1889	f62099c37f883b33e840d2d3979689179572195c6caf173f567eca2d485d87ef
 setup/fix-artefacts.py	2867	17e360376e59de659520f9721fc9d6a0de09f5d4eaa059c12bdef1ebb4d9367a
 setup/hash-list.py	244	3e65ca741fb8ceb758aff45396a1eb43f1ca3ba809e71497e76aac5a9b16fa0f
-setup/import_closure.py	17071	6332bb15d87465f747f62a0ee020288b6776b48b3fc8b76ef0a0a7c5a3019505
+setup/import_closure.py	17188	a1054b56d27bae34126e1568a9bb4045d9bbc0e8fc1931ff4dae867dcd27a9b3
 setup/kr-collect.py	3598	93df64462ec339901ad89afe756ade8382c347235f53cf5d6413d04877dc74be
 setup/launch-ar.ps1	794	3704394101d19035324fc1bb40a10aaf73d6f846a2894eb6134a28da5cf0a0d6
 setup/list_retail_maps.py	6610	97361d1381981b0aa2475f4adc79a3ecaa65c31d787cd185b3289eddbde62a41
@@ -167,7 +167,7 @@ setup/MapKitSetup.cs	4020	3b5cdedbd104e9cb0f229e3c37ef5aff9e785cc26e7cd79920b61d
 setup/preview_assets.py	8362	58e2002d924a1c8e4e250addce0e1c3c2507068535f065fdcfaba19d361f3754
 setup/ProjectSettings~/TagManager.asset	1075	51176dc0b3f4c1e2795dfbfd52b2a6580c330ae02ff16599cccb337fc73dd547
 setup/repair_videoclips.py	7596	13fdc24f3ffdb10d56e8af1d69c47558fb321ff150681fb2e43a801dd39cbbe5
-setup/retail_moods.py	12096	5a17fe26bb4d6a9aeba2278e265bb0cca9cc732ed77fa44948aed7af51661e35
+setup/retail_moods.py	12213	084650624570df46bee3465409d2ed2a2b258b89a9316cc09ceb21c75687c3f1
 setup/retail-closure-size.py	8477	7e5e2185be06464f4636cd0849d0cd2c5c828ea81b50f29120b12454f0049538
 setup/retail-null-meshes.py	2259	7ceee439dceda1084cae5522a6630792b857f5383887952bc762627d1844270a
 setup/setup-project.ps1	8902	3ca2499f0941c4e4e50a99fcf4ed44786501e296972d7bb9f76f6ba0f5503844

@@ -121,8 +121,8 @@ You do not need the UCU source code, its `tools/` folder, or any UCU developer s
    Add `-Unity "<path to Unity.exe>"` if Unity 6000.6.9f1 is not in Unity Hub's default folder. Setup writes its logs and
    the decompiler's output to `mapkit-work` beside your project (`-Work "<folder>"` to choose another). It runs two batch
    Unity sessions and takes a while; it ends with `SETUP OK`, or names the step that failed and stops there.
-5. Open the project in Unity. The Console should show no red lines. The project starts on Direct3D 12 (setup puts it
-   first in the graphics API list, then Direct3D 11).
+5. Open the project in Unity. The first open took at most 16 minutes on the one machine where it was timed. The Console
+   should show no red lines. The project starts on Direct3D 12 (setup puts it first in the graphics API list, then Direct3D 11).
 6. Bring in the art of at least one map with the biome you want ([Extract a retail map](#extract-a-retail-map)):
    **New Map from Template** builds its terrain from that biome's textures, mood and sky. Taiga River gives `tundraFrozen`.
 
@@ -192,10 +192,11 @@ The [walkthrough](Documentation~/walkthrough.md) has the steps with screenshots.
    lighting** button bakes ([Build Mod](#build-mod) does not bake). **Test map in UCU** bakes for you when the lighting data is
    missing or older than the terrain.
 6. **UCU Map Kit → Build Mod…** ([Build Mod](#build-mod)), then [test it in UCU](#test-in-ucu). The first Build Mod in a new
-   project is long: it compiles the game's shaders for the bundle and keeps them in the project's `Library` folder, and
-   the Editor is busy until it ends. Later builds reuse them and are much shorter, with one exception: the first Build Mod of a
-   map that holds a dropship, Taiga River among them, is long too (54 minutes on the tested machine, even in a project that
-   had built before). **Test map in UCU** runs the same build.
+   project is long: 53 minutes for a template map with no dropship (one run on one machine). It compiles
+   the game's shaders for the bundle and keeps them in the project's `Library` folder, and the Editor is busy until it ends.
+   Later builds reuse them: the second build of a Taiga River clone took 131 seconds; a template map's second build was not
+   timed. The first Build Mod of a map that holds a dropship, Taiga River among them, is long too (54 minutes on the tested
+   machine, even in a project that had built before). **Test map in UCU** runs the same build.
 
 ## Extract a retail map
 
@@ -314,7 +315,7 @@ The shortcuts can be changed in **Edit → Shortcuts…** under `UCU Map Kit`.
 | **Terrain Tools** | Unity's noise, erosion and stamp brushes, added by setup. Erosion strokes do not repeat exactly; noise and stamp do. |
 | **Map Settings** | The Map Kit window's *Map* tab: display name, biome, weight and map tags (kept on the scene's own game objects), and the preview picture, a PNG beside the scene that Build Mod uses as the Skirmish icon. |
 | **Objects…** | A palette of the game's objects from **Setup → Build Object Library…** (run it once after extracting maps): rocks, structures, water, decals, lights, with search. Drag into the Scene view or click to place; random rotation and scale are options. Placed buildings count as buildings in the game. |
-| **Add Contract Layer…** | Copies another contract type's encounter layer from an extracted retail map into your map, recentred on your play area and snapped to your ground; Map Check lists anything that pointed at the source map. It refuses a layer whose name the map already has, because Export names a layer's files after it: the template already has `encGeneral_Battle` and `encArena_Skirmish`, so delete the template's own layer before you copy one of that name. |
+| **Add Contract Layer…** | Copies another contract type's encounter layer from an extracted retail map into your map, recentred on your play area and snapped to your ground; Map Check lists anything that pointed at the source map. It refuses a layer whose name the map already has, because Export names a layer's files after it: the template already has `encGeneral_Battle` and `encArena_Skirmish`, so delete the template's own layer before you copy one of that name. The refusal also writes one red Console line. |
 | **Plot variants** | On an urban map, a plot's inspector has a *Variant* dropdown; the export follows the active variant. On a layer with no plot override (every layer **Add Contract Layer…** copies in) the dropdown adds one, keeping the other plots as they are, so the choice survives Map Check and Export. One Undo step. |
 | **Roads…** | Add a road, shape it with Unity's spline tool, then **Bake**: a textured road mesh on the ground, the biome's dirt-road terrain texture painted under it (as on retail maps, this texture is what shows the road; the mesh blends into it), and the Road terrain type, as one Undo step. A new template map's ground is that same dirt texture (terrain layer 0, the biome's dirt-road layer), so first paint the ground with another layer using the terrain inspector's *Paint Texture* tool (on `tundraFrozen`, layer 2, `grassA`), or the road will not show. Like retail's roads, it also counts as a building in the game's line-of-sight data. Map Check warns about a road narrower than 4 m or one that leaves the map. Played in UCU: the road shows in combat, and its cells are Road cells with the road's move costs. |
 | **New Mood…** | Copies a mood from the source list next to your map as a new mood under your own name, and tags it for a biome so every map of that biome can use it. Tune its fog, light and sky in its inspector. Build Mod packs the map's moods into a second bundle, `<map id>_moods`, and lists them in `mapkit-moods.json`; `MapKitLoader` adds them to the game's mood list at start and loads them from that bundle. Retail moods are untouched. The source list is the moods in the project: the retail moods that came with the maps you extracted, grouped by whether they belong to this map's biome, then `DefaultMood` and any other mood asset in the project. A mood you made with New Mood is not offered as a source. Extracting a map brings the retail moods the game uses on that map's biome (into `Assets/MapKitRetailMoods`). A copy of a mood with weather packs that weather's effects and textures into your mod's moods bundle (adding one took a tested bundle from 0.7 MB to 3.7 MB). A map you extracted before the kit brought moods has none: they come with the next map of that biome you extract. If the moods bundle is missing, `MapKitLoader` logs one line and the game picks one of its own moods. Played in UCU: the map shows its new mood. |
@@ -385,7 +386,7 @@ By hand:
    them. At game start it adds every installed kit map to the game's map database and writes one line per map and per
    layer to `MapKitLoader.log` in its own folder; if one map's `mapkit-map.json` is broken, the log says so, and the other
    maps still load. The kit ships its source (`Loader~`), not a built copy. Setup built it into your project's
-   `MapKitOutput/_loader/MapKitLoader` folder (`MapKitLoader.dll` and `mod.json`): that folder is the mod, so copy it.
+   `MapKitOutput/_loader/MapKitLoader` folder (`MapKitLoader.dll`, its `.pdb` and `mod.json`): that folder is the mod, so copy it.
    Test Map in UCU builds and copies it for you. For another UCU install, build it again from `Loader~` with the .NET SDK:
 
    ```
@@ -437,7 +438,8 @@ maps were extracted before the kit carried those two keeps those materials on Un
 does not replace them, because the project already holds the materials.
 
 The first Build Mod of a map that holds a dropship compiles the dropship shader's variants: 54 minutes on the machine we
-tested, with a clone of Taiga River. The next build of that map took 131 seconds. The two shaders were checked
+tested, with a clone of Taiga River. The next build of that map took 131 seconds. (A new project's first
+Build Mod is long without a dropship too: [Your first map](#your-first-map).) The two shaders were checked
 on their materials in the Editor (no pink); not in a scene, in a played map, or against the game's own look. No map holding the
 steam effect has been built.
 

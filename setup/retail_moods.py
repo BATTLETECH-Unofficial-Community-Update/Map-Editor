@@ -19,6 +19,7 @@ Exit 0 also when the map's biome has no mood (an empty list is written).
 import os, re, sys, sqlite3, collections, struct
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.dont_write_bytecode = True  # no __pycache__ beside this script: it runs inside the package, which Unity imports
 from preview_assets import index, closure  # the same GUID closure the preview setup uses
 
 GATE_RATIO = 2.0
