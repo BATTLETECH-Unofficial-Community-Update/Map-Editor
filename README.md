@@ -46,6 +46,7 @@ The UCU team that publishes MapKit does not have experience in 3D level design o
 | Read this | When |
 |---|---|
 | [Your first map, step by step](Documentation~/walkthrough.md) | You are new to the kit or to Unity. It walks you from an empty project to a contract played on your own map, in two guides: make a new map, or clone a retail map. |
+| [Map Atlas](Documentation~/atlas.html) | You want to pick a retail map to clone or study. It lists every map the game ships, filterable by biome, kind, content pack and contract type, with each map's playable area and the contracts it supports. Download it and open it in a browser. |
 | This README | Prerequisites, setup, the menu items and the editing tools, building the mod and testing it in UCU. |
 | [DEVELOPING.md](DEVELOPING.md) | You work on the kit itself. |
 
