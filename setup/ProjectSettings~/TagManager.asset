@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Mech
+  - Terrain
+  - Projectile
+  - unknown_20001
+  - unknown_20016
+  - unknown_20012
+  - NestedPrefab
+  - NestedPrefabParent
+  - unknown_20000
+  - CamWeatherFX
+  - SpaceCamera
+  - HeadRoot
+  - ClearCamera
+  - StampCompImg
+  - Obstruction
+  - IsoParent
+  - IsoCamParent
+  - IsoMechParent
+  - IsoCamera
+  - IsoRenderCamera
+  - StampCompParent
+  - StampCompCam
+  - EditorTestCam
+  - GameEnvironment
+  - DesignLight
+  - StampAreaProjector
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - VFXPhysics
+  - Terrain
+  - Utility
+  - Obstruction
+  - Combatant
+  - VFXOnly
+  - Decal
+  - Light
+  - World
+  - UI_InWorld
+  - UI_IgnoreMouseEvents
+  - Characters
+  - Space
+  - Road
+  - VFXPhysicsActive
+  - Reflector
+  - Head
+  - Starmap
+  - NoCollision
+  - NewTerrain
+  - ForceMouseEvents
+  - 
+  - 
+  - GIProxy
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []

@@ -1,0 +1,84 @@
+From 7fef7135e576b81cef290e45a3bca379a9e1c1fb Mon Sep 17 00:00:00 2001
+From: UCU map kit <ucu-map-kit@users.noreply.invalid>
+Date: Sun, 22 Nov 2026 10:09:23 -0600
+Subject: [PATCH 1/5] feat(cli): add the AssetRipper.CLI front end
+
+Upstream has no command-line project at 189ccb660 (the GUI is the only front end). This one takes `<input> <output>`,
+loads and processes the game data, and exports an Unity project. It takes every setting from the defaults.
+---
+ Source/AssetRipper.CLI/AssetRipper.CLI.csproj | 16 +++++++
+ Source/AssetRipper.CLI/Program.cs             | 42 +++++++++++++++++++
+ 2 files changed, 58 insertions(+)
+ create mode 100644 Source/AssetRipper.CLI/AssetRipper.CLI.csproj
+ create mode 100644 Source/AssetRipper.CLI/Program.cs
+
+diff --git a/Source/AssetRipper.CLI/AssetRipper.CLI.csproj b/Source/AssetRipper.CLI/AssetRipper.CLI.csproj
+new file mode 100644
+index 000000000..d2c371ab3
+--- /dev/null
++++ b/Source/AssetRipper.CLI/AssetRipper.CLI.csproj
+@@ -0,0 +1,16 @@
++<Project Sdk="Microsoft.NET.Sdk">
++
++	<PropertyGroup>
++		<OutputType>Exe</OutputType>
++		<TargetFramework>net10.0</TargetFramework>
++		<ImplicitUsings>enable</ImplicitUsings>
++		<Nullable>enable</Nullable>
++	</PropertyGroup>
++
++	<ItemGroup>
++		<ProjectReference Include="..\AssetRipper.Import\AssetRipper.Import.csproj" />
++		<ProjectReference Include="..\AssetRipper.Export.UnityProjects\AssetRipper.Export.UnityProjects.csproj" />
++		<ProjectReference Include="..\AssetRipper.IO.Files\AssetRipper.IO.Files.csproj" />
++	</ItemGroup>
++
++</Project>
+diff --git a/Source/AssetRipper.CLI/Program.cs b/Source/AssetRipper.CLI/Program.cs
+new file mode 100644
+index 000000000..965bfa5fa
+--- /dev/null
++++ b/Source/AssetRipper.CLI/Program.cs
+@@ -0,0 +1,42 @@
++using AssetRipper.Export.Configuration;
++using AssetRipper.Export.UnityProjects;
++using AssetRipper.IO.Files;
++using AssetRipper.Import.Logging;
++
++string inputPath;
++string outputPath;
++
++if (args.Length >= 2)
++{
++	inputPath = args[0];
++	outputPath = args[1];
++}
++else
++{
++	Console.Error.WriteLine("Usage: AssetRipper.CLI <input path> <output path>");
++	return 1;
++}
++
++Logger.Add(new ConsoleLogger());
++Logger.LogSystemInformation("AssetRipper.CLI");
++
++FullConfiguration settings = new();
++ExportHandler handler = new(settings);
++
++Console.WriteLine($"Loading: {inputPath}");
++Console.WriteLine($"Export to: {outputPath}");
++
++var gameData = handler.LoadAndProcess([inputPath], LocalFileSystem.Instance);
++
++if (gameData.GameBundle.HasAnyAssetCollections())
++{
++	Directory.CreateDirectory(outputPath);
++	handler.Export(gameData, outputPath, LocalFileSystem.Instance);
++	Console.WriteLine("Export complete.");
++	return 0;
++}
++else
++{
++	Console.Error.WriteLine("No assets found in input path.");
++	return 1;
++}

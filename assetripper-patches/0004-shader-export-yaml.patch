@@ -1,0 +1,24 @@
+From 418e3559e163262b92de627508a3f372d954179b Mon Sep 17 00:00:00 2001
+From: UCU map kit <ucu-map-kit@users.noreply.invalid>
+Date: Sun, 22 Nov 2026 10:11:50 -0600
+Subject: [PATCH 4/5] feat(export): default ShaderExportMode to Yaml
+
+Shaders export as Unity YAML ShaderAssets (ShaderLab source plus the compiled programs) instead of the Dummy stand-in,
+which the Unity 6 Editor can recompile.
+---
+ Source/AssetRipper.Export/Configuration/ExportSettings.cs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/AssetRipper.Export/Configuration/ExportSettings.cs b/Source/AssetRipper.Export/Configuration/ExportSettings.cs
+index 18bc656c1..3942a2264 100644
+--- a/Source/AssetRipper.Export/Configuration/ExportSettings.cs
++++ b/Source/AssetRipper.Export/Configuration/ExportSettings.cs
+@@ -37,7 +37,7 @@ public sealed record class ExportSettings
+ 	/// <summary>
+ 	/// How to export shaders?
+ 	/// </summary>
+-	public ShaderExportMode ShaderExportMode { get; set; } = ShaderExportMode.Dummy;
++	public ShaderExportMode ShaderExportMode { get; set; } = ShaderExportMode.Yaml;
+ 
+ 	/// <summary>
+ 	/// Should sprites be exported as a texture? Recommended: Native

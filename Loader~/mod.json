@@ -1,0 +1,11 @@
+{
+    "Name": "MapKitLoader",
+    "Enabled": true,
+    "Version": "0.2.0",
+    "Description": "UCU Map Kit loader: registers every installed kit map (each mod folder with a mapkit-map.json) with the game's map database. Install once; kit maps depend on it.",
+    "Author": "BattleTech: Unofficial Community Update",
+    "DLL": "MapKitLoader.dll",
+    "DLLEntryPoint": "MapKitLoader.Entry.Init",
+    "DependsOn": [],
+    "ConflictsWith": []
+}

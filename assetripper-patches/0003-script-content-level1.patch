@@ -1,0 +1,25 @@
+From e7fb7ce8af220ce96e7174008ef83a297437e948 Mon Sep 17 00:00:00 2001
+From: UCU map kit <ucu-map-kit@users.noreply.invalid>
+Date: Sun, 22 Nov 2026 10:11:50 -0600
+Subject: [PATCH 3/5] feat(import): default ScriptContentLevel to Level1
+
+ICSharpCode.Decompiler overflows the stack (AddCheckedBlocks.GetResult recursion) on self-referencing MonoBehaviours at
+Level2, as in BattleTech's Assembly-CSharp. Level1 still loads the assemblies for type resolution, so sprite GUIDs and
+component references resolve, but method bodies come out stubbed.
+---
+ Source/AssetRipper.Import/Configuration/ImportSettings.cs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/AssetRipper.Import/Configuration/ImportSettings.cs b/Source/AssetRipper.Import/Configuration/ImportSettings.cs
+index 1addc4502..97f292bf3 100644
+--- a/Source/AssetRipper.Import/Configuration/ImportSettings.cs
++++ b/Source/AssetRipper.Import/Configuration/ImportSettings.cs
+@@ -8,7 +8,7 @@ public sealed record class ImportSettings
+ 	/// <summary>
+ 	/// The level of scripts to export
+ 	/// </summary>
+-	public ScriptContentLevel ScriptContentLevel { get; set; } = ScriptContentLevel.Level2;
++	public ScriptContentLevel ScriptContentLevel { get; set; } = ScriptContentLevel.Level1;
+ 
+ 	/// <summary>
+ 	/// Including the streaming assets directory can cause some games to fail while exporting.

@@ -1,0 +1,14 @@
+{
+  "name": "com.ucu.mapkit",
+  "version": "0.1.0",
+  "displayName": "UCU Map Kit",
+  "description": "Editor tools for making new BATTLETECH maps for BattleTech: Unofficial Community Update (UCU). Runs in a kit project after setup. Contains no game code, meshes, textures or maps; carries UCU's recovered shaders and pictures of game content (NOTICE.md).",
+  "unity": "6000.6",
+  "license": "MIT",
+  "dependencies": {
+    "com.unity.splines": "2.9.2"
+  },
+  "author": {
+    "name": "BattleTech: Unofficial Community Update"
+  }
+}

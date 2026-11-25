@@ -1,0 +1,2 @@
+# LF on every checkout, whatever core.autocrlf says: MANIFEST.tsv's hashes and `git apply` of assetripper-patches need LF.
+* text=auto eol=lf
