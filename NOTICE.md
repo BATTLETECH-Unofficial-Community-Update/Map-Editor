@@ -27,6 +27,8 @@ of BATTLETECH.
   - `Documentation~/images/r1-preview-low.jpg`
   - `Documentation~/images/r2-extract-retail-maps.png` (the Extract Retail Maps window; its list shows retail's own map
     icons and the kit's preview pictures)
+  - `Documentation~/images/new-map-buildings-in-ucu.jpg`
+  - `Documentation~/images/terrain-types-overlay.png`
 - **Map preview pictures.** `previews/` holds 68 PNG pictures of retail maps, one per file named for the map, rendered in
   UCU. They show BATTLETECH maps.
 

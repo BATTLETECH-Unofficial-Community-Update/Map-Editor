@@ -16,6 +16,10 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- The framework references are UCU's own (above), so no .NET Framework 4.7.2 Developer Pack is needed: without
+         these two, MSBuild stops with MSB3644 on a PC that lacks the pack. -->
+    <_TargetFrameworkDirectories>$(ManagedDir)</_TargetFrameworkDirectories>
+    <_FullFrameworkReferenceAssemblyPaths>$(ManagedDir)</_FullFrameworkReferenceAssemblyPaths>
   </PropertyGroup>
   <Target Name="CheckInputs" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="!Exists('$(ManagedDir)\Assembly-CSharp.dll')" Text="pass -p:ManagedDir=&lt;UCU&gt;\BattleTech_Data\Managed (no Assembly-CSharp.dll in '$(ManagedDir)')" />

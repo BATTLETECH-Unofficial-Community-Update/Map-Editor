@@ -10,6 +10,14 @@ You do not need to be a 3D artist. A new map starts from a template with flat gr
 up. You shape the ground, place the art the game already has, and mark where the lances start and
 where the objectives are. Alternatively, you can clone an existing map and edit it.
 
+![A new map made from the template, with three buildings placed on it, at the first turn of a fight in UCU](Documentation~/images/new-map-buildings-in-ucu.jpg)
+
+*A new map made from the template, with three buildings placed on it, played in UCU.*
+
+![Terrain types painted on a new map, in the Unity Editor with the UCU Map Kit panel open](Documentation~/images/terrain-types-overlay.png)
+
+*Painting terrain types (forest and water) on a new map, in the Unity Editor.*
+
 ## Why the kit needs UCU, and why there is no kit for retail BATTLETECH
 
 Maps made with the kit require [**BATTLETECH: Unofficial Community Update (UCU)**](https://btucu.org), a free community update of the game.  
@@ -34,7 +42,7 @@ work on maps, CWolf -- he's exactly right about the lift required, and we don't 
 
 Map-kit uses your retail install: it copies the game's art from it into your Unity project, on your machine.
 A map you build carries the art it uses in its bundles ([NOTICE](NOTICE.md)). The kit carries no game code, meshes, textures or maps. Pictures that show game content are in it: 68 overhead map
-preview pictures in `previews/`, and three screenshots in `Documentation~/images/`. It also carries UCU's recovered shaders
+preview pictures in `previews/`, and five screenshots in `Documentation~/images/`. It also carries UCU's recovered shaders
 (see [Rights and licensing](#rights-and-licensing)). [NOTICE](NOTICE.md) lists all of them.
 
 ## A Community Effort: Your Help Required
@@ -469,7 +477,7 @@ with their own licences.
 
 The kit contains no game code, meshes, textures or maps. Setup reads the game's code and art from your own UCU and retail
 installs into a project on your machine. A map you build carries the art it uses in its bundles. What the kit does ship that shows or comes from the game: the 68 map preview
-pictures in `previews/`, three screenshots in `Documentation~/images/`, and UCU's recovered BATTLETECH shaders in `Shaders/`,
+pictures in `previews/`, five screenshots in `Documentation~/images/`, and UCU's recovered BATTLETECH shaders in `Shaders/`,
 which the kit ships so the game's materials draw in your Editor (see [NOTICE](NOTICE.md)).
 BATTLETECH and its content belong to Harebrained Schemes and Paradox Interactive. UCU is a non-commercial
 community project operated under Paradox Interactive's user-generated-content terms and requires a retail copy of
